@@ -4,6 +4,7 @@
 
 
 #[tomcatservers]
+#any of the host machines ptivates IP
 172.31.41.52  ansible_user=ec2-user
 
 
