@@ -16,7 +16,11 @@ pipeline {
         git branch: 'master', credentialsId: 'git_credentials', url: 'https://github.com/yimmyyimmy/jenkins-with-ansible-for-pipeline.git'
       }
     }
-     
+      stage('Upload to Nexus') {
+      steps{
+        nexusArtifactUploader artifacts: [[artifactId: 'SimpleWebApplication\'', classifier: '', file: 'target/SimpleWebApplication.war', type: 'war']], credentialsId: 'nexus-jenkins', groupId: 'com.maven', nexusUrl: '172.31.41.199:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '9.1.14-SNAPSHOT'
+      }
+    }
     //Run the playbook
     stage('RunPlaybook') {
       steps {
