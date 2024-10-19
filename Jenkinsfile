@@ -16,7 +16,7 @@ pipeline {
         git branch: 'master', credentialsId: 'git_credentials', url: 'https://github.com/yimmyyimmy/jenkins-with-ansible-for-pipeline.git'
       }
     }
-    
+  
     stage('Build') {
       steps{
         sh 'mvn clean install'
